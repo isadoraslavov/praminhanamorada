@@ -5,134 +5,132 @@
 <title>Para Isa</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #fff7b1, #b3d9ff);
-  overflow-x: hidden;
-  color: #1a1a1a;
+body{
+  margin:0;
+  font-family:Arial;
+  background: linear-gradient(135deg, #fff3b0, #a5d8ff);
+  min-height:100vh;
+}
+
+/* layout principal cheio */
+.wrapper{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
 
 /* topo */
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
+.top{
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
 }
 
 /* contador */
-.counter {
-  background: rgba(255,255,255,0.85);
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 13px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.counter{
+  background:white;
+  padding:10px 14px;
+  border-radius:12px;
+  font-size:13px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* música */
-.music {
-  font-size: 30px;
-  cursor: pointer;
-  animation: pulse 2s infinite;
+.music{
+  font-size:28px;
+  cursor:pointer;
+  background:white;
+  padding:10px 14px;
+  border-radius:12px;
 }
 
-@keyframes pulse {
-  50% { transform: scale(1.1); }
+/* centro ocupando tela */
+.center{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
 }
 
-/* conteúdo */
-.container {
-  max-width: 700px;
-  margin: auto;
-  padding: 40px 20px;
-  text-align: center;
+/* título novo */
+h1{
+  font-size:32px;
+  margin-bottom:10px;
 }
 
-/* título */
-.header {
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-align: center;
-  margin-top: 10px;
-}
-
-/* texto original preservado */
-.texto {
-  margin-top: 40px;
-  line-height: 1.7;
-  font-size: 16px;
+/* texto */
+p{
+  max-width:600px;
+  line-height:1.6;
 }
 
 /* botão */
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 26px;
-  background: #4dabf7;
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
-.btn:hover {
-  transform: scale(1.05);
+.btn{
+  margin-top:25px;
+  padding:14px 26px;
+  background:#4dabf7;
+  color:white;
+  border-radius:30px;
+  text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
+<div class="wrapper">
+
 <div class="top">
   <div class="counter" id="contador"></div>
-  <div class="music" onclick="toggleMusic()">🐝</div>
+  <div class="music" onclick="toggleMusic()">▶️</div>
 </div>
 
-<div class="header">Paraíso 💛💙</div>
+<div class="center">
 
-<div class="container">
+<h1>desde quando eu estou sendo mais feliz</h1>
 
-<!-- 🔥 SEU TEXTO ORIGINAL PRESERVADO -->
-<div class="texto">
-<p>Eu tava pensando…<br>
-tem coisas em você que eu acabo reparando sem nem perceber<br>
-e sempre acaba virarando parte das coisas que eu mais gosto em você</p>
-</div>
+<p>
+Eu não sei explicar exatamente quando isso começou…<br>
+mas desde que você chegou, tudo ficou mais leve.
+</p>
 
-<a class="btn" href="pagina2.html">mas como não sei escolher uma só…</a>
+<a class="btn" href="pagina2.html">continuar</a>
 
 </div>
 
 <audio id="musica" src="musica.mp3"></audio>
 
+</div>
+
 <script>
-function toggleMusic() {
-  const m = document.getElementById("musica");
-  m.paused ? m.play() : m.pause();
+function toggleMusic(){
+  const m=document.getElementById("musica");
+  m.paused?m.play():m.pause();
 }
 
-function atualizar() {
-  const inicio = new Date("2024-01-24T00:00:00");
-  const agora = new Date();
+function atualizar(){
+  const inicio=new Date("2024-01-24T00:00:00");
+  const agora=new Date();
 
-  let diff = Math.floor((agora - inicio)/1000);
+  let diff=Math.floor((agora-inicio)/1000);
 
-  let meses = Math.floor(diff/(30*24*3600));
-  diff %= (30*24*3600);
+  let meses=Math.floor(diff/(30*24*3600));
+  diff%=(30*24*3600);
 
-  let dias = Math.floor(diff/(24*3600));
-  diff %= (24*3600);
+  let dias=Math.floor(diff/(24*3600));
+  diff%=(24*3600);
 
-  let horas = Math.floor(diff/3600);
-  diff %= 3600;
+  let horas=Math.floor(diff/3600);
+  diff%=3600;
 
-  let min = Math.floor(diff/60);
-  let seg = diff%60;
+  let min=Math.floor(diff/60);
+  let seg=diff%60;
 
-  document.getElementById("contador").innerHTML =
-    `${meses}m • ${dias}d • ${horas}h • ${min}m • ${seg}s`;
+  document.getElementById("contador").innerHTML=
+  `${meses}m ${dias}d ${horas}h ${min}m ${seg}s`;
 }
 
 setInterval(atualizar,1000);
