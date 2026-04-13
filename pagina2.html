@@ -5,65 +5,67 @@
 <title>Página 2</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg, #fff7b1, #b3d9ff);
+body{
+  margin:0;
+  font-family:Arial;
+  background: linear-gradient(135deg, #fff3b0, #a5d8ff);
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
+/* ocupa tela inteira */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
 }
 
-/* GRID ARRUMADO */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
+/* grid grande */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
 }
 
 /* card */
-.card {
-  text-align: center;
-  cursor: pointer;
+.card{
+  cursor:pointer;
+  text-align:center;
 }
 
 /* capa */
-.cover {
-  height: 200px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #ffd43b, #4dabf7);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+.cover{
+  height:220px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#ffd43b,#4dabf7);
 }
 
-/* imagem */
-.photo {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 18px;
-  display: none;
+/* imagem sem corte */
+.photo{
+  width:100%;
+  border-radius:16px;
+  display:none;
 }
 
-.revealed .cover { display: none; }
-.revealed .photo { display: block; }
-
-.text {
-  margin-top: 10px;
+/* texto aparece junto */
+.text{
+  display:none;
+  margin-top:10px;
+  font-size:14px;
 }
 
-/* carta */
-.next {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 40px;
-  animation: bounce 1.5s infinite;
+.revealed .cover{display:none;}
+.revealed .photo{display:block;}
+.revealed .text{display:block;}
+
+/* seta clara */
+.arrow{
+  text-align:center;
+  margin-top:40px;
+  font-size:40px;
+  animation:bounce 1.5s infinite;
 }
 
-@keyframes bounce {
-  50% { transform: translateY(-8px); }
+@keyframes bounce{
+  50%{transform:translateY(-10px);}
 }
 </style>
 </head>
@@ -74,7 +76,6 @@ body {
 
 <div class="grid">
 
-<!-- 🔥 SEUS TEXTOS PRESERVADOS -->
 <div class="card" onclick="this.classList.add('revealed')">
 <div class="cover"></div>
 <img class="photo" src="olhos.jpg">
@@ -84,26 +85,24 @@ body {
 <div class="card" onclick="this.classList.add('revealed')">
 <div class="cover"></div>
 <img class="photo" src="cabelo.jpg">
-<div class="text">Seu cabelo foi uma das primeiras coisas que eu notei em você.</div>
+<div class="text">Seu cabelo me marcou.</div>
 </div>
 
 <div class="card" onclick="this.classList.add('revealed')">
 <div class="cover"></div>
 <img class="photo" src="sorriso.jpg">
-<div class="text">Seu sorriso muda seu rosto inteiro.</div>
+<div class="text">Seu sorriso muda tudo.</div>
 </div>
 
 <div class="card" onclick="this.classList.add('revealed')">
 <div class="cover"></div>
 <img class="photo" src="coisas.png">
-<div class="text">Tem coisas que você gosta que acabaram ficando comigo também.</div>
+<div class="text">Algumas coisas suas ficaram em mim.</div>
 </div>
 
 </div>
 
-<div class="next">
-  ↓ ✉️ <a href="pagina3.html"></a>
-</div>
+<div class="arrow">⬇️ ➡️ <a href="pagina3.html">✉️</a></div>
 
 </div>
 
