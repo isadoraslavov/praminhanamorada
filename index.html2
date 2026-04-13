@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Página 2 - Isa</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #fff7b1, #b3d9ff);
+  color: #1a1a1a;
+}
+
+/* layout geral */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* blocos */
+.card {
+  margin-bottom: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* CARD FECHADO (mistério) */
+.cover {
+  width: 100%;
+  max-width: 350px;
+  height: 250px;
+  margin: 10px auto;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #74c0fc, #ffd43b);
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* brilho sutil */
+.cover::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  top: 0;
+  left: -60%;
+  background: rgba(255,255,255,0.3);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+.cover:hover::after {
+  left: 120%;
+}
+
+/* leve zoom */
+.cover:hover {
+  transform: scale(1.03);
+}
+
+/* imagem */
+.photo {
+  width: 100%;
+  max-width: 350px;
+  display: none;
+  margin: 10px auto;
+  border-radius: 20px;
+  border: 5px solid white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* texto */
+.text {
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* estado revelado */
+.revealed .cover {
+  display: none;
+}
+
+.revealed .photo {
+  display: block;
+  opacity: 1;
+}
+
+/* ícone carta */
+.next {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 40px;
+}
+
+.next a {
+  text-decoration: none;
+  color: black;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- OLHOS -->
+<div class="card" onclick="reveal(this)">
+  <div class="cover"></div>
+  <img class="photo" src="olhos.jpg" alt="Olhos">
+  <div class="text">
+    Eu me sinto vista quando você me olha.<br><br>
+    Seus olhos têm um brilho diferente, e suas pupilas quase sempre parecem maiores que o normal.<br>
+    o verde que chega antes de qualquer coisa que você diga
+  </div>
+</div>
+
+<!-- CABELO -->
+<div class="card" onclick="reveal(this)">
+  <div class="cover"></div>
+  <img class="photo" src="cabelo.jpg" alt="Cabelo">
+  <div class="text">
+    Seu cabelo foi uma das primeiras coisas que eu notei em você.<br>
+    depois disso, nada mais passou despercebido.<br>
+    e eu não te olhei mais do mesmo jeito.
+  </div>
+</div>
+
+<!-- SORRISO -->
+<div class="card" onclick="reveal(this)">
+  <div class="cover"></div>
+  <img class="photo" src="sorriso.jpg" alt="Sorriso">
+  <div class="text">
+    Seu sorriso muda seu rosto inteiro.<br>
+    Quando ele aparece pra mim, tudo fica mais leve por alguns segundos.<br>
+    de novo e de novo, sempre como se fosse a primeira vez
+  </div>
+</div>
+
+<!-- COISAS -->
+<div class="card" onclick="reveal(this)">
+  <div class="cover"></div>
+  <img class="photo" src="coisas.png" alt="Coisas que ela gosta">
+  <div class="text">
+    Tem coisas que você gosta que acabaram ficando comigo também.<br>
+    Não só de forma simples me lembrando de você, mas do jeito em que elas começaram a aparecer no meu dia como se já fizessem parte daqui.<br>
+    e quando eu percebi, já não sabia mais separar o que é meu do que veio de você.<br>
+    é como se algumas coisas que pertencem a você tivessem encontrado um lugar em mim.
+  </div>
+</div>
+
+<!-- CARTA -->
+<div class="next">
+  <a href="pagina3.html">✉️</a>
+</div>
+
+</div>
+
+<script>
+function reveal(element) {
+  element.classList.add("revealed");
+}
+</script>
+
+</body>
+</html>
