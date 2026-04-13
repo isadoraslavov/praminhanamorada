@@ -1,132 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Para Isa</title>
-
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:linear-gradient(135deg,#fff3b0,#a5d8ff);
-}
-
-/* topo */
-.top{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 20px;
-}
-
-/* contador */
-.counter{
-  background:white;
-  padding:10px 14px;
-  border-radius:12px;
-  font-size:13px;
-}
-
-/* abelha música */
-.music{
-  font-size:28px;
-  cursor:pointer;
-  animation:float 2s infinite;
-}
-
-@keyframes float{
-  50%{transform:translateY(-5px);}
-}
-
-/* título do contador (IMPORTANTE como você pediu) */
-.counter-title{
-  text-align:center;
-  font-size:18px;
-  margin-top:20px;
-}
-
-/* centro */
-.center{
-  text-align:center;
-  margin-top:60px;
-  padding:20px;
-}
-
-/* SEU TEXTO ORIGINAL (NÃO FOI APAGADO) */
-.text{
-  max-width:600px;
-  margin:auto;
-  line-height:1.6;
-  margin-top:20px;
-}
-
-/* botão original */
-.btn{
-  display:inline-block;
-  margin-top:30px;
-  padding:14px 26px;
-  background:#4dabf7;
-  color:white;
-  border-radius:30px;
-  text-decoration:none;
-}
-</style>
-</head>
-
-<body>
-
-<div class="top">
-  <div class="counter" id="contador"></div>
-  <div class="music" onclick="toggleMusic()">🐝</div>
-</div>
-
-<div class="counter-title">
-desde quando eu estou sendo mais feliz com você
-</div>
-
-<div class="center">
-
-<!-- SEU TEXTO NÃO FOI ALTERADO -->
-<div class="text">
-<p>Eu tava pensando…<br>
-tem coisas em você que eu acabo reparando sem nem perceber<br>
-e isso vira parte do que eu mais gosto em você</p>
-</div>
-
-<a class="btn" href="pagina2.html">continuar</a>
-
-</div>
-
-<audio id="musica" src="musica.mp3"></audio>
-
-<script>
-function toggleMusic(){
-  const m=document.getElementById("musica");
-  m.paused?m.play():m.pause();
-}
-
-/* CONTADOR CORRETO (SEM BUG DE HORAS E SEGUNDOS) */
-function update(){
-  const start=new Date("2024-01-24T00:00:00");
-  const now=new Date();
-
-  let diff=Math.floor((now-start)/1000);
-
-  let days=Math.floor(diff/(3600*24));
-  diff%=3600*24;
-
-  let hours=Math.floor(diff/3600);
-  diff%=3600;
-
-  let minutes=Math.floor(diff/60);
-  let seconds=diff%60;
-
-  document.getElementById("contador").innerHTML=
-  `${days} dias • ${hours}h • ${minutes}m • ${seconds}s`;
-}
-
-setInterval(update,1000);
-update();
-</script>
-
-</body>
-</html>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Tempo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root{
+      --azul:#4a90e2;
+      --amarelo:#f5c842;
+      --bg1:#a1c4fd;
+      --bg2:#fff1eb;
+      --texto:#2f3f57;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+      overflow-x: hidden;
+      color: var(--texto);
+      padding: 18px;
+    }
