@@ -2,61 +2,107 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Carta</title>
+<title>Página 2</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Georgia, serif;
-  background: linear-gradient(135deg, #fff7b1, #b3d9ff);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+body{
+  margin:0;
+  font-family:Arial;
+  background: linear-gradient(135deg, #fff3b0, #a5d8ff);
 }
 
-.letter {
-  background: #fffdf5;
-  max-width: 650px;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-  line-height: 1.8;
+/* ocupa tela inteira */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
 }
 
-/* seu texto preservado */
-.signature {
-  margin-top: 30px;
-  text-align: right;
-  font-style: italic;
-  font-weight: bold;
+/* grid grande */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+/* card */
+.card{
+  cursor:pointer;
+  text-align:center;
+}
+
+/* capa */
+.cover{
+  height:220px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#ffd43b,#4dabf7);
+}
+
+/* imagem sem corte */
+.photo{
+  width:100%;
+  border-radius:16px;
+  display:none;
+}
+
+/* texto aparece junto */
+.text{
+  display:none;
+  margin-top:10px;
+  font-size:14px;
+}
+
+.revealed .cover{display:none;}
+.revealed .photo{display:block;}
+.revealed .text{display:block;}
+
+/* seta clara */
+.arrow{
+  text-align:center;
+  margin-top:40px;
+  font-size:40px;
+  animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+  50%{transform:translateY(-10px);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="letter">
+<div class="container">
 
-<p>
-hoje eu queria te dizer que o que eu sinto por você não depende de facilidade ou de tudo dar certo o tempo todo. tem algo em você que me prende de um jeito que eu nunca vou saber explicar.
-</p>
+<div class="grid">
 
-<p>
-e mesmo com distância, mesmo com tudo que poderia afastar, eu continuo escolhendo você. todos os dias.
-</p>
-
-<p>
-e você nem sabe o quanto esse mesmo jeito que me prende me faz te admirar como pessoa.
-</p>
-
-<p>
-se um dia eu pensei no amor de forma diferente, hoje eu entendo que é isso.
-</p>
-
-<div class="signature">
-Deiza
+<div class="card" onclick="this.classList.add('revealed')">
+<div class="cover"></div>
+<img class="photo" src="olhos.jpg">
+<div class="text">Eu me sinto vista quando você me olha.</div>
 </div>
+
+<div class="card" onclick="this.classList.add('revealed')">
+<div class="cover"></div>
+<img class="photo" src="cabelo.jpg">
+<div class="text">Seu cabelo me marcou.</div>
+</div>
+
+<div class="card" onclick="this.classList.add('revealed')">
+<div class="cover"></div>
+<img class="photo" src="sorriso.jpg">
+<div class="text">Seu sorriso muda tudo.</div>
+</div>
+
+<div class="card" onclick="this.classList.add('revealed')">
+<div class="cover"></div>
+<img class="photo" src="coisas.png">
+<div class="text">Algumas coisas suas ficaram em mim.</div>
+</div>
+
+</div>
+
+<div class="arrow">⬇️ ➡️ <a href="pagina3.html">✉️</a></div>
 
 </div>
 
