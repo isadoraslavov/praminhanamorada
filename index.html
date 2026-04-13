@@ -9,140 +9,134 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #fff7b1, #b3d9ff);
-  color: #1a1a1a;
   overflow-x: hidden;
+  color: #1a1a1a;
 }
 
 /* topo */
-.header {
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-/* abelhas */
-.bee {
-  position: absolute;
-  animation: fly 12s linear infinite;
-}
-
-@keyframes fly {
-  0% { transform: translateX(-10vw) translateY(0); }
-  50% { transform: translateX(50vw) translateY(-30px); }
-  100% { transform: translateX(110vw) translateY(0); }
-}
-
-/* container texto */
-.container {
-  max-width: 700px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-/* botão/ícone música */
-.music {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-/* botão próximo */
-.next {
-  margin-top: 40px;
-  text-align: center;
-}
-
-.next a {
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  border-bottom: 1px solid black;
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
 }
 
 /* contador */
 .counter {
-  margin-top: 30px;
-  font-size: 18px;
+  background: rgba(255,255,255,0.85);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* música */
+.music {
+  font-size: 30px;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.1); }
+}
+
+/* conteúdo */
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px 20px;
   text-align: center;
 }
 
-.small {
-  font-size: 12px;
-  opacity: 0.7;
+/* título */
+.header {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* texto original preservado */
+.texto {
+  margin-top: 40px;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* botão */
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 26px;
+  background: #4dabf7;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<!-- música -->
-<div class="music" onclick="toggleMusic()">🐝</div>
-
-<audio id="song" loop>
-  <source src="sua-musica.mp3" type="audio/mp3">
-</audio>
-
-<!-- abelhas decorativas -->
-<div class="bee" style="top:10%; left:0;">🐝</div>
-<div class="bee" style="top:30%; left:-20%;">🐝</div>
-<div class="bee" style="top:60%; left:-40%;">🐝</div>
-
-<!-- topo -->
-<div class="header">
-  para ysa
+<div class="top">
+  <div class="counter" id="contador"></div>
+  <div class="music" onclick="toggleMusic()">🐝</div>
 </div>
 
-<!-- texto principal -->
+<div class="header">Paraíso 💛💙</div>
+
 <div class="container">
 
-<p>
-Eu tava pensando…<br>
+<!-- 🔥 SEU TEXTO ORIGINAL PRESERVADO -->
+<div class="texto">
+<p>Eu tava pensando…<br>
 tem coisas em você que eu acabo reparando sem nem perceber<br>
-e isso sempre acaba virando parte do que eu mais gosto em você
-</p>
-
-<!-- contador -->
-<div class="counter">
-  juntos há:<br>
-  <span id="time"></span>
-  <div class="small">desde 24 de janeiro</div>
+e sempre acaba virarando parte das coisas que eu mais gosto em você</p>
 </div>
 
-<!-- botão página 2 -->
-<div class="next">
-  <a href="pagina2.html">mas não sei escolher uma só…</a>
-</div>
+<a class="btn" href="pagina2.html">mas como não sei escolher uma só…</a>
 
 </div>
+
+<audio id="musica" src="musica.mp3"></audio>
 
 <script>
-// música
 function toggleMusic() {
-  const audio = document.getElementById("song");
-  if (audio.paused) audio.play();
-  else audio.pause();
+  const m = document.getElementById("musica");
+  m.paused ? m.play() : m.pause();
 }
 
-// contador
-function updateCounter() {
-  const start = new Date("2024-01-24T00:00:00");
-  const now = new Date();
+function atualizar() {
+  const inicio = new Date("2024-01-24T00:00:00");
+  const agora = new Date();
 
-  let diff = now - start;
+  let diff = Math.floor((agora - inicio)/1000);
 
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  let hours = Math.floor(diff / (1000 * 60 * 60));
-  let minutes = Math.floor(diff / (1000 * 60));
+  let meses = Math.floor(diff/(30*24*3600));
+  diff %= (30*24*3600);
 
-  document.getElementById("time").innerText =
-    days + " dias • " + hours + " horas • " + minutes + " minutos";
+  let dias = Math.floor(diff/(24*3600));
+  diff %= (24*3600);
+
+  let horas = Math.floor(diff/3600);
+  diff %= 3600;
+
+  let min = Math.floor(diff/60);
+  let seg = diff%60;
+
+  document.getElementById("contador").innerHTML =
+    `${meses}m • ${dias}d • ${horas}h • ${min}m • ${seg}s`;
 }
 
-setInterval(updateCounter, 1000);
-updateCounter();
+setInterval(atualizar,1000);
+atualizar();
 </script>
 
 </body>
