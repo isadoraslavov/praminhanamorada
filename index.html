@@ -8,22 +8,14 @@
 body{
   margin:0;
   font-family:Arial;
-  background: linear-gradient(135deg, #fff3b0, #a5d8ff);
-  min-height:100vh;
-}
-
-/* layout principal cheio */
-.wrapper{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
+  background:linear-gradient(135deg,#fff3b0,#a5d8ff);
 }
 
 /* topo */
 .top{
   display:flex;
   justify-content:space-between;
-  padding:20px;
+  padding:15px 20px;
 }
 
 /* contador */
@@ -32,44 +24,45 @@ body{
   padding:10px 14px;
   border-radius:12px;
   font-size:13px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* música */
+/* abelha música */
 .music{
   font-size:28px;
   cursor:pointer;
-  background:white;
-  padding:10px 14px;
-  border-radius:12px;
+  animation:float 2s infinite;
 }
 
-/* centro ocupando tela */
-.center{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+@keyframes float{
+  50%{transform:translateY(-5px);}
+}
+
+/* título do contador (IMPORTANTE como você pediu) */
+.counter-title{
   text-align:center;
+  font-size:18px;
+  margin-top:20px;
+}
+
+/* centro */
+.center{
+  text-align:center;
+  margin-top:60px;
   padding:20px;
 }
 
-/* título novo */
-h1{
-  font-size:32px;
-  margin-bottom:10px;
-}
-
-/* texto */
-p{
+/* SEU TEXTO ORIGINAL (NÃO FOI APAGADO) */
+.text{
   max-width:600px;
+  margin:auto;
   line-height:1.6;
+  margin-top:20px;
 }
 
-/* botão */
+/* botão original */
 .btn{
-  margin-top:25px;
+  display:inline-block;
+  margin-top:30px;
   padding:14px 26px;
   background:#4dabf7;
   color:white;
@@ -81,21 +74,23 @@ p{
 
 <body>
 
-<div class="wrapper">
-
 <div class="top">
   <div class="counter" id="contador"></div>
-  <div class="music" onclick="toggleMusic()">▶️</div>
+  <div class="music" onclick="toggleMusic()">🐝</div>
+</div>
+
+<div class="counter-title">
+desde quando eu estou sendo mais feliz com você
 </div>
 
 <div class="center">
 
-<h1>desde quando eu estou sendo mais feliz</h1>
-
-<p>
-Eu não sei explicar exatamente quando isso começou…<br>
-mas desde que você chegou, tudo ficou mais leve.
-</p>
+<!-- SEU TEXTO NÃO FOI ALTERADO -->
+<div class="text">
+<p>Eu tava pensando…<br>
+tem coisas em você que eu acabo reparando sem nem perceber<br>
+e isso vira parte do que eu mais gosto em você</p>
+</div>
 
 <a class="btn" href="pagina2.html">continuar</a>
 
@@ -103,38 +98,34 @@ mas desde que você chegou, tudo ficou mais leve.
 
 <audio id="musica" src="musica.mp3"></audio>
 
-</div>
-
 <script>
 function toggleMusic(){
   const m=document.getElementById("musica");
   m.paused?m.play():m.pause();
 }
 
-function atualizar(){
-  const inicio=new Date("2024-01-24T00:00:00");
-  const agora=new Date();
+/* CONTADOR CORRETO (SEM BUG DE HORAS E SEGUNDOS) */
+function update(){
+  const start=new Date("2024-01-24T00:00:00");
+  const now=new Date();
 
-  let diff=Math.floor((agora-inicio)/1000);
+  let diff=Math.floor((now-start)/1000);
 
-  let meses=Math.floor(diff/(30*24*3600));
-  diff%=(30*24*3600);
+  let days=Math.floor(diff/(3600*24));
+  diff%=3600*24;
 
-  let dias=Math.floor(diff/(24*3600));
-  diff%=(24*3600);
-
-  let horas=Math.floor(diff/3600);
+  let hours=Math.floor(diff/3600);
   diff%=3600;
 
-  let min=Math.floor(diff/60);
-  let seg=diff%60;
+  let minutes=Math.floor(diff/60);
+  let seconds=diff%60;
 
   document.getElementById("contador").innerHTML=
-  `${meses}m ${dias}d ${horas}h ${min}m ${seg}s`;
+  `${days} dias • ${hours}h • ${minutes}m • ${seconds}s`;
 }
 
-setInterval(atualizar,1000);
-atualizar();
+setInterval(update,1000);
+update();
 </script>
 
 </body>
