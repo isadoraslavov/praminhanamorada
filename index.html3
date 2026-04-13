@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Carta - Isa</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: linear-gradient(135deg, #fff7b1, #b3d9ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* folha de carta */
+.letter {
+  background: #fffdf5;
+  width: 90%;
+  max-width: 700px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  line-height: 1.7;
+}
+
+/* detalhe “carta” */
+.letter:before {
+  content: "";
+  display: block;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, #ffe066, #66b3ff);
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* texto */
+p {
+  margin-bottom: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="letter">
+
+<p>
+hoje eu queria te dizer que o que eu sinto por você não depende de facilidade ou de tudo dar certo o tempo todo. tem algo em você que me prende de um jeito que eu nunca vou saber explicar.
+</p>
+
+<p>
+e mesmo com distância, mesmo com tudo que poderia afastar, eu continuo escolhendo você. todos os dias. não por insistência, mas porque é você, e isso pra mim já é mais que o suficiente pra tentar, começar e, se necessário, recomeçar quantas vezes forem preciso.
+</p>
+
+<p>
+e você nem sabe o quanto esse mesmo jeito que me prende me faz te admirar como pessoa, e querer ainda mais te admirar como namorada, como esposa e como mãe dos meus filhos.
+</p>
+
+<p>
+se um dia eu pensei no amor de forma diferente, hoje eu entendo que é isso. é querer ficar, querer cuidar, querer crescer junto e não abrir mão, mesmo quando não é fácil.
+</p>
+
+</div>
+
+</body>
+</html>
