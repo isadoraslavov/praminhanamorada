@@ -1,4 +1,4 @@
-/* 1. CONFIGURAÇÕES GERAIS E CORES */
+/* 1. CONFIGURAÇÕES GERAIS */
 :root {
     --azul-escuro: #1a5f7a;
     --azul-claro: #86bbd8;
@@ -10,7 +10,7 @@
 
 body, html {
     margin: 0; padding: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     background: linear-gradient(135deg, var(--azul-escuro), var(--azul-claro));
     min-height: 100vh;
@@ -19,51 +19,82 @@ body, html {
 
 .container { padding: 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
 
-/* 2. PÁGINA 1: FOTOS ESPALHADAS E DOMADAS (NÃO ESTOURAM) */
-.layout-split { 
-    display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; min-height: 80vh; 
+/* 2. BOTÕES (O QUE TINHA SUMIDO) */
+.botao-amarelo, .link-carta, .btn-voltar {
+    display: inline-block;
+    background-color: var(--amarelo-vibrante) !important;
+    color: var(--azul-escuro) !important;
+    padding: 15px 30px;
+    text-decoration: none !important;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: none;
+    cursor: pointer;
 }
 
-.grid-fotos {
-    display: flex; flex-wrap: wrap; justify-content: center; max-width: 100%; gap: 10px;
+/* 3. CONTADOR (DESIGN VOLTOU) */
+.contador-estilo {
+    font-size: 1.4rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid var(--amarelo);
+    display: inline-block;
+    margin: 20px 0;
+    font-weight: bold;
 }
 
-.foto-polaroid {
-    background: white; padding: 8px 8px 25px 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    width: 140px; /* Tamanho perfeito para telemóvel */
-    transition: 0.3s;
+/* 4. FOTOS POLAROID (PÁGINA 1 E 2) */
+.grid-fotos, .galeria-vertical {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px 0;
+}
+
+.foto-polaroid, .card-foto {
+    background: white; padding: 10px 10px 35px 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    width: 160px; transition: 0.3s;
     flex-shrink: 0;
 }
 
-/* Efeito tortinho charmoso */
-.foto-polaroid:nth-child(odd) { transform: rotate(-5deg); }
-.foto-polaroid:nth-child(even) { transform: rotate(5deg); }
+.foto-polaroid:nth-child(odd), .card-foto:nth-child(odd) { transform: rotate(-3deg); }
+.foto-polaroid:nth-child(even), .card-foto:nth-child(even) { transform: rotate(3deg); }
 
-.foto-polaroid img { 
-    width: 100% !important; height: 140px !important; 
-    object-fit: cover; display: block; 
+.foto-polaroid img, .foto-interna {
+    width: 100% !important; height: 160px !important;
+    object-fit: cover; display: block;
 }
 
-/* 3. PÁGINA 2: GALERIA VERTICAL (A QUE ELA VAI ARRASTANDO) */
-.galeria-vertical { display: flex; flex-direction: column; gap: 40px; padding: 20px 0; align-items: center; }
-
-.card-foto {
-    background: white; padding: 10px 10px 40px 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    width: 90%; max-width: 320px; transition: 0.3s;
-}
-
-.card-foto:nth-child(odd) { transform: rotate(-2deg); }
-.card-foto:nth-child(even) { transform: rotate(2deg); }
-
-.foto-interna { width: 100%; height: 300px; object-fit: cover; display: block; }
-
-.legenda-foto { 
-    color: #333; padding: 15px 5px 0 5px; font-size: 0.95rem; 
-    line-height: 1.5; font-family: 'Georgia', serif; font-style: italic; 
-}
-
-/* 4. DESIGN DA CARTA (ESTÉTICA DE PAPEL PREMIUM) */
+/* 5. DESIGN DA CARTA (VOLTOU A SER PAPEL) */
 .papel-carta {
-    background: #fffef0; color: #444; padding
+    background: #fffef0;
+    color: #444;
+    padding: 40px 25px;
+    margin: 30px auto;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2), inset 0 0 50px rgba(230,220,180,0.3);
+    border: 1px solid #dcd7c0;
+}
+
+.papel-carta::before {
+    content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid #c2b59b; pointer-events: none;
+}
+
+.texto-carta {
+    font-family: 'Georgia', serif; font-size: 1.15rem; line-height: 1.8;
+    text-align: left;
+}
+
+.assinatura {
+    margin-top: 30px; text-align: right;
+    font-family: 'Georgia', serif; font-style: italic; font-size: 1.4rem; color: var(--azul-escuro);
+}
+
+/* 6. MÚSICA E ABELHA */
+.musica-player { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+.icon-btn { background: var(--amarelo); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; }
+.bee-container::after { content: '🐝'; position: fixed; font-size: 25px; animation: voo 15s linear infinite; }
+@keyframes voo { 0% { left: -10%; top: 20%; } 100% { left: 110%; top: 80%; } }
