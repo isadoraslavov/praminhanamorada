@@ -1,110 +1,49 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8">
-<title>Página 2</title>
 
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background: linear-gradient(135deg, #fff3b0, #a5d8ff);
-}
+    <meta charset="UTF-8">
 
-/* ocupa tela inteira */
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:40px 20px;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* grid grande */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:25px;
-}
+    <title>Minha Carta</title>
 
-/* card */
-.card{
-  cursor:pointer;
-  text-align:center;
-}
+    <link rel="stylesheet" href="style.css">
 
-/* capa */
-.cover{
-  height:220px;
-  border-radius:16px;
-  background:linear-gradient(135deg,#ffd43b,#4dabf7);
-}
-
-/* imagem sem corte */
-.photo{
-  width:100%;
-  border-radius:16px;
-  display:none;
-}
-
-/* texto aparece junto */
-.text{
-  display:none;
-  margin-top:10px;
-  font-size:14px;
-}
-
-.revealed .cover{display:none;}
-.revealed .photo{display:block;}
-.revealed .text{display:block;}
-
-/* seta clara */
-.arrow{
-  text-align:center;
-  margin-top:40px;
-  font-size:40px;
-  animation:bounce 1.5s infinite;
-}
-
-@keyframes bounce{
-  50%{transform:translateY(-10px);}
-}
-</style>
 </head>
 
-<body>
+<body class="bg-azul-suave">
 
-<div class="container">
+    <main class="container-carta">
 
-<div class="grid">
+        <div class="papel-carta">
 
-<div class="card" onclick="this.classList.add('revealed')">
-<div class="cover"></div>
-<img class="photo" src="olhos.jpg">
-<div class="text">Eu me sinto vista quando você me olha.</div>
-</div>
+            <div class="texto-carta">
 
-<div class="card" onclick="this.classList.add('revealed')">
-<div class="cover"></div>
-<img class="photo" src="cabelo.jpg">
-<div class="text">Seu cabelo me marcou.</div>
-</div>
+                [COLE AQUI TODO O TEXTO DA SUA CARTA]
 
-<div class="card" onclick="this.classList.add('revealed')">
-<div class="cover"></div>
-<img class="photo" src="sorriso.jpg">
-<div class="text">Seu sorriso muda tudo.</div>
-</div>
+            </div>
 
-<div class="card" onclick="this.classList.add('revealed')">
-<div class="cover"></div>
-<img class="photo" src="coisas.png">
-<div class="text">Algumas coisas suas ficaram em mim.</div>
-</div>
+            <div class="assinatura">
 
-</div>
+                De: [SEU NOME / REMETENTE]
 
-<div class="arrow">⬇️ ➡️ <a href="pagina3.html">✉️</a></div>
+            </div>
 
-</div>
+        </div>
+
+        <div class="voltar">
+
+            <a href="index.html">← Voltar ao início</a>
+
+        </div>
+
+    </main>
 
 </body>
+
 </html>
+
+
