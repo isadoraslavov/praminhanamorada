@@ -1,275 +1,128 @@
+/* 1. CONFIGURAÇÕES TÉCNICAS E CORES */
 :root {
-
     --azul-escuro: #1a5f7a;
-
     --azul-claro: #86bbd8;
-
     --amarelo: #f7d08a;
-
     --amarelo-vibrante: #ffd300;
+}
 
-    --branco-papel: #fdfdfd;
-
+* {
+    box-sizing: border-box; /* Garante que o tamanho das caixas não mude com padding */
 }
 
 body, html {
-
-    margin: 0;
-
-    padding: 0;
-
+    margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
     color: white;
-
-    overflow-x: hidden;
-
-}
-
-.bg-gradient {
-
     background: linear-gradient(135deg, var(--azul-escuro), var(--azul-claro));
-
     min-height: 100vh;
-
+    overflow-x: hidden; /* IMPEDE QUE O SITE CORTE OU CORRA PARA OS LADOS */
 }
 
-.bg-azul-suave {
-
-    background-color: var(--azul-claro);
-
-    min-height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
+.container { 
+    padding: 20px; 
+    max-width: 100%; /* Garante que o conteúdo não ultrapasse a tela */
+    margin: 0 auto; 
+    text-align: center; 
 }
 
-.container {
-
-    padding: 40px;
-
-    max-width: 1200px;
-
-    margin: 0 auto;
-
+/* 2. LAYOUT PRIMEIRA PÁGINA (CONTADOR E FOTOS) */
+.layout-split { 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+    gap: 20px; 
+    min-height: 70vh;
+    flex-wrap: wrap; /* Faz os itens pularem linha se não couberem */
 }
 
-/* Layout Split */
-
-.layout-split {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 50px;
-
-}
-
+/* 3. O CONTADOR */
 .contador-estilo {
-
-    font-size: 1.5rem;
-
-    background: rgba(255, 255, 255, 0.2);
-
-    padding: 20px;
-
-    border-radius: 15px;
-
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    background: rgba(255,255,255,0.1);
+    padding: 20px; 
+    border-radius: 15px; 
     border-left: 5px solid var(--amarelo);
-
-    margin-top: 10px;
-
+    width: fit-content;
+    margin: 10px auto;
 }
 
-/* Grid de Fotos */
-
-.grid-fotos {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 15px;
-
-    margin: 20px 0;
-
+/* 4. AS FOTOS (O CONSERTO QUE VOCÊ PRECISA) */
+.foto-polaroid, .card-foto {
+    background: white; 
+    padding: 10px 10px 30px 10px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3); 
+    width: 150px; /* TAMANHO FIXO DA CAIXINHA BRANCA */
+    transition: 0.3s;
+    margin: 10px;
 }
 
-.foto-placeholder, .moldura-amarela {
-
-    background: #ddd;
-
-    height: 150px;
-
-    border: 3px solid var(--amarelo);
-
-    border-radius: 8px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    color: #333;
-
-}
-
-/* Botões */
-
-.botao-amarelo {
-
-    display: inline-block;
-
-    background-color: var(--amarelo-vibrante);
-
-    color: var(--azul-escuro);
-
-    padding: 15px 30px;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    border-radius: 30px;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-
-    transition: transform 0.2s;
-
-}
-
-.botao-amarelo:hover {
-
-    transform: scale(1.05);
-
-}
-
-/* Abelhas Animadas */
-
-.bee-container {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    pointer-events: none;
-
-    z-index: 999;
-
-}
-
-/* Simulação de abelha simples com CSS */
-
-.bee-container::after {
-
-    content: '🐝';
-
-    position: absolute;
-
-    font-size: 24px;
-
-    animation: voo 10s linear infinite;
-
-}
-
-@keyframes voo {
-
-    0% { transform: translate(-10%, 20vh) rotate(0deg); }
-
-    25% { transform: translate(30%, 40vh) rotate(20deg); }
-
-    50% { transform: translate(60%, 10vh) rotate(-20deg); }
-
-    75% { transform: translate(80%, 30vh) rotate(10deg); }
-
-    100% { transform: translate(110%, 20vh) rotate(0deg); }
-
-}
-
-/* Carta */
-
-.container-carta {
-
-    width: 90%;
-
-    max-width: 600px;
-
-}
-
-.papel-carta {
-
-    background: var(--branco-papel);
-
-    color: #333;
-
-    padding: 50px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-
+/* ESSA PARTE ABAIXO É O QUE PRENDE A FOTO NA CAIXA */
+.foto-polaroid img, .foto-interna { 
+    width: 100% !important; /* Força a foto a ter a largura da caixa */
+    height: 150px !important; /* Força todas as fotos a terem a mesma altura */
+    object-fit: cover; /* Faz a foto preencher o quadrado sem achatar */
+    display: block;
     border-radius: 2px;
-
-    position: relative;
-
-    min-height: 400px;
-
 }
 
-.assinatura {
-
-    margin-top: 40px;
-
-    text-align: right;
-
-    font-style: italic;
-
-    border-top: 1px solid #eee;
-
-    padding-top: 10px;
-
+.grid-fotos, .galeria-vertical { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+    justify-content: center; 
 }
 
-/* Música */
+.galeria-vertical { flex-direction: column; align-items: center; }
 
-.musica-player {
-
-    position: fixed;
-
-    top: 20px;
-
-    right: 20px;
-
-    z-index: 1000;
-
+/* 5. TEXTOS QUE DOBRAM (PARA NÃO BATER UM NO OUTRO) */
+.frase-subtitulo, .legenda-foto, .legenda-contador, .frase-final {
+    max-width: 320px; /* Limita a largura do texto */
+    margin: 15px auto; 
+    line-height: 1.5;
+    word-wrap: break-word; /* Força a quebra de palavras */
+    white-space: normal; /* Permite pular linha */
+    color: var(--amarelo);
 }
 
-.icon-btn {
+.legenda-foto { color: #333; font-size: 0.9rem; } /* Texto dentro da polaroid fica escuro */
 
-    background: var(--amarelo);
+/* 6. BOTÕES E LINKS */
+.botao-amarelo, .link-carta {
+    display: inline-block; 
+    background: var(--amarelo-vibrante); 
+    color: var(--azul-escuro);
+    padding: 15px 30px; 
+    text-decoration: none; 
+    border-radius: 30px; 
+    font-weight: bold; 
+    margin-top: 20px;
+}
 
-    border: none;
+/* 7. AJUSTE ESPECÍFICO PARA CELULAR */
+@media (max-width: 768px) {
+    .layout-split { flex-direction: column; }
+    .foto-polaroid { width: 140px; } /* Diminui um tiquinho no celular */
+    .titulo-principal { font-size: 1.6rem; }
+    .contador-estilo { font-size: 1.2rem; }
+}
 
-    border-radius: 50%;
+/* 8. ANIMAÇÃO DA ABELHA */
+.bee-container::after {
+    content: '🐝'; position: fixed; font-size: 25px; animation: voo 15s linear infinite; z-index: 1000;
+}
+@keyframes voo {
+    0% { left: -10%; top: 20%; } 100% { left: 110%; top: 80%; }
+}
 
-    width: 50px;
-
-    height: 50px;
-
-    font-size: 20px;
-
-    cursor: pointer;
-
+/* 9. PLAYER DE MÚSICA */
+.musica-player { position: fixed; top: 15px; right: 15px; z-index: 2000; }
+.icon-btn { 
+    background: var(--amarelo); 
+    border: none; 
+    border-radius: 50%; 
+    width: 45px; 
+    height: 45px; 
+    cursor: pointer; 
 }
