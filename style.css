@@ -66,10 +66,19 @@ body, html {
     object-fit: cover; display: block;
 }
 
+/* AJUSTE DA COR DO TEXTO DAS FOTOS (O QUE VOCÊ PEDIU) */
+.legenda-foto {
+    color: #333 !important;
+    padding-top: 10px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    display: block;
+}
+
 /* 5. DESIGN DA CARTA (VOLTOU A SER PAPEL) */
 .papel-carta {
     background: #fffef0;
-    color: #333;
+    color: #444;
     padding: 40px 25px;
     margin: 30px auto;
     max-width: 90%;
